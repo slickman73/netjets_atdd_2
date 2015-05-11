@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/01_cucumber_and_gherkin_syntax.iml" filepath="$PROJECT_DIR$/.idea/01_cucumber_and_gherkin_syntax.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/04_web_app_with_page_objects.iml" filepath="$PROJECT_DIR$/.idea/04_web_app_with_page_objects.iml" />
     </modules>
   </component>
 </project>
