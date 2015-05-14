@@ -3,15 +3,18 @@ require 'page-object'
 include PageObject::PageFactory
 
 Given(/^the customer has selected search parameters$/) do
-  #goto website
-  #select new reservation
+  #goto_rentawreck_home
+
+  #new_reservation
   #choose a random number and type of search parameters
-  @criteria1= 'rental_class'
-  @criteria1_value= 'luxury'
+
+  @criteria1, @criteria1_value = enter_single_search_criteria
+
 end
 
 When(/^the search is run$/) do
   #search
+  new_search
 end
 
 
@@ -25,19 +28,24 @@ Then(/^only available cars which meet the search parameters are displayed$/) do
 end
 
 Given(/^a search for available cars has returned results$/) do
-  #goto website
-  #select new reservation
-  #select two random search parameters for known available cars
-  #search
-  #verify results sorted by type
+  goto_rentawreck_home
+  new_reservation
+  @criteria1, @criteria1_value = single_search_criteria
+  new_search
+
 end
 
 When(/^a parameter is selected$/) do
-  #click the top a random column other than type
+  sort_cars
 end
 
 Then(/^the cars are sorted by the selected parameter$/) do
-  #verify results are now sorted by column selected followed by type
+  #verify results are now sorted by column selected
+  expect(search_results).not_to be_empty
+  sorted=search_results.each_cons(2).all? do |a,b|
+    (a.price<=>b.price) <=0
+  end
+  expect(sorted).to eq true
 end
 
 When(/^the customer selects a car$/) do
@@ -46,6 +54,7 @@ end
 
 Then(/^details for the selected car are displayed$/) do
   #verify the details page for the selected car is displayed
+  expect
 end
 
 Given(/^no cars meeting a customer's criteria are available$/) do
@@ -59,3 +68,4 @@ end
 And(/^notification that no results exist should be displayed$/) do
   #verify no results returned message is displayed
 end
+
