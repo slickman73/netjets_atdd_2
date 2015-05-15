@@ -63,9 +63,9 @@ end
 
 Then(/^no search results should be returned$/) do
   #verify search results are empty
-end
 
 And(/^notification that no results exist should be displayed$/) do
   #verify no results returned message is displayed
 end
 
+end

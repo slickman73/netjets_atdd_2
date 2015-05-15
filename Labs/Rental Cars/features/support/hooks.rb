@@ -9,4 +9,8 @@ Before do
   rescue => e
     warn e
   end
+
+  After do
+    @browser.close
+  end
  end
