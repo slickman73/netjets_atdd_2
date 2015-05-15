@@ -2,6 +2,9 @@ require 'locale'
 require 'page_definitions/wikipedia_home'
 require 'page-object'
 require 'test/unit'
+require 'test/unit/assertions'
+
+include Test::Unit::Assertions
 
 include PageObject::PageFactory
 
@@ -36,5 +39,14 @@ Then(/^I am shown summaries of several recent news items on the dashboard$/) do
 end
 
 Then(/^I am shown names of (\d+) recently deceased individuals on the dashboard$/) do |arg1|
-  pending # express the regexp above with the code you wish you had
+  on_page WikipediaDashboard do |page|
+    puts page.recently_deceased_names
+    assert_equal page.recently_deceased_names.size, arg1.to_i
+    end
+    
+end
+
+
+And(/^I can access Wikinews from the dashboard$/) do
+  pending
 end

@@ -2,7 +2,8 @@ require 'locale'
 require 'test/unit'
 require 'cucumber'
 
-
+require 'test/unit/assertions'
+include Test::Unit::Assertions
 
 When(/^I access Wikipedia for my language$/) do
   @browser.goto "http://wikipedia.com"

@@ -12,7 +12,7 @@ class WikipediaDashboard
   def recently_deceased_names
     deceased_names = browser.spans(:xpath => "//div[@id='mp-itn']/p/span")
     deceased_names.collect do |item|
-      item
+      item.text
     end
   end
 end

@@ -35,8 +35,8 @@ Then /^I should see the previously stored result$/ do
   assert_equal @result, @calc.current_display
 end
 
-When /^I use the special constant$/ do |constant|
-  @calc.push constant
+When /^I use the special constant (.*)$/ do |special_constant_name|
+  @calc.push_special_constant_name
 end
 
 Then /^the current value on the screen should be (.*)$/ do |output|
